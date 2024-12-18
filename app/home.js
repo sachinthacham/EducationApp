@@ -5,10 +5,8 @@ import {
   TouchableOpacity,
   StyleSheet,
   FlatList,
-  ActivityIndicator,
   Image,
   TextInput,
-  ImageBackground,
   Pressable,
 } from "react-native";
 import { useRouter } from "expo-router";
@@ -67,15 +65,15 @@ const Home = () => {
             throw new Error("User data not found in Firestore.");
           }
         } catch (err) {
-          console.error("Error fetching user data:", err.message); // Log detailed error
+          console.error("Error fetching user data:", err.message);
           setError(err.message || "Failed to fetch user data.");
         } finally {
-          setLoading(false); // Stop loading when the data is fetched
+          setLoading(false);
         }
       };
 
       fetchData();
-      fetchAstroData(); // Call fetchAstroData when logged in
+      fetchAstroData();
     }
   }, [isLoggedIn, user, router]);
 
@@ -98,17 +96,9 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        {/* Menu Icon on the Left */}
         <Image source={require("./assets/logo3.png")} style={styles.appLogo} />
-        {/* Logo on the Right */}
-        {/* <TouchableOpacity style={styles.logoutButton} onPress={() => logout()}>
-        <Image
-          source={require("./assets/logout3.png")}
-          style={styles.logout}
-        />
-      </TouchableOpacity> */}
+
         <Text style={styles.username}>Welcome,{username}!</Text>
-        {/* <Text style={styles.username}>sachintha</Text> */}
       </View>
 
       <TextInput
@@ -119,7 +109,6 @@ const Home = () => {
         placeholderTextColor="#4a4e69"
       />
 
-      {/* Rest of your app */}
       <FlatList
         style={styles.list}
         data={filteredData}
@@ -306,26 +295,26 @@ const styles = StyleSheet.create({
   },
   redFloatingButton: {
     position: "absolute",
-    bottom: 20, // Distance from the bottom
-    left: 20, // Distance from the left
-    backgroundColor: "red", // Red color for the button
-    width: 120, // Button width
-    height: 40, // Button height
+    bottom: 20,
+    left: 20,
+    backgroundColor: "red",
+    width: 120,
+    height: 40,
     borderRadius: 10,
-    justifyContent: "center", // Center content vertically
-    alignItems: "center", // Center content horizontally
-    elevation: 5, // Adds a shadow (Android)
-    shadowColor: "#000", // Shadow color (iOS)
-    shadowOffset: { width: 0, height: 2 }, // Shadow offset
-    shadowOpacity: 0.2, // Shadow opacity
-    shadowRadius: 3, // Shadow blur radius
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 5,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
     flexDirection: "row",
     justifyContent: "space-arround",
     alignItems: "center",
   },
   floatingButtonText: {
-    color: "white", // Text color
-    fontSize: 20, // Font size
+    color: "white",
+    fontSize: 20,
     fontWeight: "bold",
   },
 });

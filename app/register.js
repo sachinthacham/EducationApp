@@ -34,7 +34,6 @@ const Register = () => {
       email: "",
     };
 
-    // email validation
     if (!email.trim()) {
       newErrors.email = "Email is required!";
       isValid = false;
@@ -48,7 +47,6 @@ const Register = () => {
       isValid = false;
     }
 
-    // Password validation
     if (!password.trim()) {
       newErrors.password = "Password is required!";
       isValid = false;
@@ -57,7 +55,6 @@ const Register = () => {
       isValid = false;
     }
 
-    // Confirm Password validation
     if (!confirmPassword.trim()) {
       newErrors.confirmPassword = "Please confirm your password.";
       isValid = false;
@@ -72,21 +69,21 @@ const Register = () => {
 
   const handleRegister = () => {
     if (validate()) {
-      register(email, password, username); // Register the user
+      register(email, password, username);
       alert("Registration successful! Please log in.");
       router.replace("/login");
     }
   };
 
   const navigateToLogin = () => {
-    router.push("/login"); // Navigate to the login page
+    router.push("/login");
   };
 
   return (
     <ImageBackground
-      source={require("./assets/astro4.jpg")} // Replace with your image path
+      source={require("./assets/astro4.jpg")}
       style={styles.background}
-      resizeMode="cover" // Adjusts how the image is scaled
+      resizeMode="cover"
     >
       <View style={styles.overlay}>
         <Text style={styles.title}>Register</Text>
@@ -96,7 +93,7 @@ const Register = () => {
           value={email}
           onChangeText={(text) => {
             setEmail(text);
-            if (errors.email) setErrors((prev) => ({ ...prev, email: "" })); // Clear error
+            if (errors.email) setErrors((prev) => ({ ...prev, email: "" }));
           }}
           placeholderTextColor="#4a4e69"
         />
@@ -123,7 +120,7 @@ const Register = () => {
           onChangeText={(text) => {
             setPassword(text);
             if (errors.password)
-              setErrors((prev) => ({ ...prev, password: "" })); // Clear error
+              setErrors((prev) => ({ ...prev, password: "" }));
           }}
           placeholderTextColor="#4a4e69"
         />
@@ -139,7 +136,7 @@ const Register = () => {
           onChangeText={(text) => {
             setConfirmPassword(text);
             if (errors.confirmPassword)
-              setErrors((prev) => ({ ...prev, confirmPassword: "" })); // Clear error
+              setErrors((prev) => ({ ...prev, confirmPassword: "" }));
           }}
           placeholderTextColor="#4a4e69"
         />
